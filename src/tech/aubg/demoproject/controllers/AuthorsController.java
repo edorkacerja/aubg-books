@@ -20,6 +20,12 @@ public class AuthorsController {
 	@Autowired
 	AuthorService authorService;
 
+	/**
+	 * @param theModel
+	 * @description this method uses authorService to get a List of all the Authors
+	 *  which are present in the database and adds the list as an attribute to the model.
+	 * @return list_authors.jsp page
+	 */
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String getAuthors(Model theModel){
 		
@@ -33,6 +39,11 @@ public class AuthorsController {
 	}
 	
 	
+	/**
+	 * @param theModel
+	 * @description creates a new Author object and adds it as an attribute to the model.
+	 * @return the new_author.jsp page
+	 */
 	@RequestMapping(value="/newAuthor", method=RequestMethod.GET)
 	public String showFormForNewAuthor(Model theModel){
 		
@@ -43,6 +54,13 @@ public class AuthorsController {
 		return "new_author";
 	}
 	
+	
+	/**
+	 * @param author
+	 * @description saves the newBook parameter to the database using the bookService.
+	 * Then after that is done, it redirects the browser to the /books/list URL.
+	 * @return
+	 */
 	@RequestMapping(value="/saveAuthor", method=RequestMethod.POST)
 	public String saveAuthor(@ModelAttribute(value="author") Author author){
 		
@@ -53,6 +71,16 @@ public class AuthorsController {
 		return "redirect:/authors/list";
 	}
 	
+	
+
+
+	/**
+	 * @param authorId
+	 * @param theModel
+	 * @description this method uses authorService to get the author with the specific id specified from the parameter authorId.
+	 *  then adds that author to the model. 
+	 * @return the new_author.jsp page
+	 */
 	@RequestMapping(value="/updateAuthor", method=RequestMethod.GET)
 	public String updateAuthor(@RequestParam(value="authorId") int authorId, Model theModel){
 		

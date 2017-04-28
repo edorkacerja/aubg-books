@@ -15,6 +15,7 @@ import tech.aubg.demoproject.entities.Book;
 import tech.aubg.demoproject.services.AuthorService;
 import tech.aubg.demoproject.services.BookService;
 
+
 @Controller
 @RequestMapping("/books")
 public class BooksController {
@@ -24,6 +25,12 @@ public class BooksController {
 	@Autowired
 	AuthorService authorService;
 	
+	/**
+	 * @param theModel
+	 * @description this method uses bookService to get a List of all the Books
+	 *  which are present in the database and adds the list as an attribute to the model.
+	 * @return list_books.jsp page
+	 */
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String getBooks(Model theModel){
 		List<Book> myBooks = bookService.getBooks();
@@ -32,6 +39,12 @@ public class BooksController {
 	}
 	
 	
+	/**
+	 * @param theModel
+	 * @description creates a new Book object and adds it as an attribute to the model.
+	 * Also gets a list of all the Authors in the database and ads them to the model.
+	 * @return the new_book.jsp page
+	 */
 	@RequestMapping(value="/newBook", method=RequestMethod.GET)
 	public String showFormForNewBook(Model theModel){
 		
@@ -45,6 +58,12 @@ public class BooksController {
 	}
 	
 	
+	/**
+	 * @param newBook
+	 * @description saves the newBook parameter to the database using the bookService.
+	 * Then after that is done, it redirects the browser to the /books/list URL.
+	 * @return
+	 */
 	@RequestMapping(value="/saveBook", method=RequestMethod.POST)
 	public String saveNewBook(@ModelAttribute("book") Book newBook){
 		
@@ -55,6 +74,13 @@ public class BooksController {
 	}
 	
 	
+	/**
+	 * @param bookId
+	 * @param theModel 
+	 * @description this method uses bookService to get the book with the specific id specified from the parameter bookId.
+	 *  then adds that book to the model. 
+	 * @return the new_book.jsp page
+	 */
 	@RequestMapping(value="/updateBook", method=RequestMethod.GET)
 	public String updateBook(@RequestParam("bookId") int bookId, Model theModel){
 		
@@ -65,6 +91,13 @@ public class BooksController {
 		return "new_book";
 	}
 	
+	/**
+	 * @param bookId
+	 * @param theModel
+	 * @description this method uses bookService to delete the book with id bookId from the database.
+	 * then it redirects the browser to the /books/list URL.
+	 * @return
+	 */
 	@RequestMapping(value="/deleteBook")
 	public String deleteBook(@RequestParam("bookId") int bookId, Model theModel) {
 		
