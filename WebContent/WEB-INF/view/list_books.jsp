@@ -31,12 +31,16 @@
 			<c:url var="updateLink" value="/books/updateBook">
 				<c:param name="bookId" value="${temp_book.bookId}" />
 			</c:url>
+			
+			<c:url var="deleteLink" value="/books/deleteBook">
+				<c:param name="bookId" value="${temp_book.bookId}" />
+			</c:url>
 
 			<tr>
 				<td>${ temp_book.title}</td>
 				<td>${ temp_book.authorId}</td>
 				<td>${ temp_book.pages}</td>
-				<td> <a href="${updateLink}"> Edit </a> </td>
+				<td> <a href="${updateLink}"> Edit </a> | <a href="${deleteLink}" onclick="if (!(confirm('Delete book?'))) return false"> Delete </a> </td>
 			</tr>
 		</c:forEach>
 

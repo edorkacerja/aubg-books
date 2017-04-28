@@ -39,4 +39,12 @@ public class BookServiceIml implements BookService {
 		return book;
 	}
 
+
+
+	@Override
+	public void deleteBook(int bookId) {
+
+		bookDAO.deleteBook(bookId);
+	}
+
 }

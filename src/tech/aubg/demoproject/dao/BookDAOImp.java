@@ -57,4 +57,18 @@ public class BookDAOImp implements BookDAO {
 		return book;
 	}
 
+
+	@Override
+	@Transactional
+	public void deleteBook(int bookId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query theQuery = currentSession.createQuery("delete from Book where bookId="+bookId);
+//		theQuery.setParameter("bookId", bookId);
+		
+		theQuery.executeUpdate();
+		
+	}
+
 }

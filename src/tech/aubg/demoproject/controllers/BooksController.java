@@ -65,7 +65,13 @@ public class BooksController {
 		return "new_book";
 	}
 	
-	
+	@RequestMapping(value="/deleteBook")
+	public String deleteBook(@RequestParam("bookId") int bookId, Model theModel) {
+		
+		bookService.deleteBook(bookId);
+		
+		return "redirect:/books/list";
+	}
 
 
 }
