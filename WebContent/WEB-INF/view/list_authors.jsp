@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<input type="button" value="Add author"
+		onclick="window.location.href='newAuthor'; return false;" />
 
 <table>
 		<tr>
@@ -22,7 +24,7 @@
 
 			<!--  just a variable to define the update url and author id -->
 			<c:url var="updateLink" value="/authors/updateAuthor">
-				<c:param name="authorId" value="${temp_book.authorId}" />
+				<c:param name="authorId" value="${temp_author.authorId}" />
 			</c:url>
 
 			<tr>

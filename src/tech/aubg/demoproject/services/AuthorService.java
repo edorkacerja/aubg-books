@@ -8,4 +8,8 @@ public interface AuthorService {
 	
 	public List<Author> getAuthors();
 
+	public void saveAuthor(Author author);
+
+	public Author getAuthor(int authorId);
+
 }

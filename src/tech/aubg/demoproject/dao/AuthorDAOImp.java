@@ -32,6 +32,30 @@ public class AuthorDAOImp implements AuthorDAO {
 
 		return myList;
 	}
+
+	@Override
+	@Transactional
+	public void saveAuthor(Author author) {
+
+		// get current session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// save author in db
+		currentSession.save(author);
+	}
+
+	@Override
+	@Transactional
+	public Author getAuthor(int authorId) {
+		
+		// get current session
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		// get the author whose id matches 
+		Author author = currentSession.get(Author.class, authorId);
+		
+		return author;
+	}
 	
 	
 	

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import tech.aubg.demoproject.entities.Author;
 import tech.aubg.demoproject.entities.Book;
+import tech.aubg.demoproject.services.AuthorService;
 import tech.aubg.demoproject.services.BookService;
 
 @Controller
@@ -19,6 +21,8 @@ public class BooksController {
 	
 	@Autowired
 	BookService bookService;
+	@Autowired
+	AuthorService authorService;
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String getBooks(Model theModel){
@@ -33,6 +37,10 @@ public class BooksController {
 		
 		Book mBook = new Book();
 		theModel.addAttribute("book", mBook);
+		
+		List<Author> authors = authorService.getAuthors();
+		theModel.addAttribute("authors", authors);
+		
 		return "new_book";
 	}
 	

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,8 +13,8 @@
 
 
 	<form:form action="saveBook" modelAttribute="book" method="POST">
-	
-		<form:hidden path="bookId"/>
+
+		<form:hidden path="bookId" />
 
 		<table>
 			<tbody>
@@ -26,7 +26,14 @@
 
 				<tr>
 					<td>Books Author</td>
-					<td><form:input path="authorId" /></td>
+					<td>
+					<form:select name="authors" path="authorId">
+							<c:forEach var="author" items="${authors}">
+								<option value="${author.authorId}">${author.name}</option>
+							</c:forEach>
+						</form:select> 
+						
+						</td>
 				</tr>
 
 				<tr>
@@ -43,10 +50,11 @@
 
 
 	</form:form>
-	
-	
+
+
 	<p>
-		<a href="${pageContext.request.contextPath}/books/list"> Back to Books List </a>
+		<a href="${pageContext.request.contextPath}/books/list"> Back to
+			Books List </a>
 	</p>
 
 

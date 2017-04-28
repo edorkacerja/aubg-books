@@ -23,4 +23,21 @@ public class AuthorServiceImp implements AuthorService{
 		return authors;
 	}
 
+
+	@Override
+	public void saveAuthor(Author author) {
+		
+		authorDAO.saveAuthor(author);
+		
+	}
+
+
+	@Override
+	public Author getAuthor(int authorId) {
+
+		Author author = authorDAO.getAuthor(authorId);
+		
+		return author;
+	}
+
 }
