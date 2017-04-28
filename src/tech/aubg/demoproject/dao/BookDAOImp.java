@@ -65,7 +65,6 @@ public class BookDAOImp implements BookDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		
 		Query theQuery = currentSession.createQuery("delete from Book where bookId="+bookId);
-//		theQuery.setParameter("bookId", bookId);
 		
 		theQuery.executeUpdate();
 		
