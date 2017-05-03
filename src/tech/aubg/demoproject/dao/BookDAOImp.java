@@ -23,7 +23,7 @@ public class BookDAOImp implements BookDAO {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 
-		Query<Book> myQuery = currentSession.createQuery("from Book order by title", Book.class);
+		Query<Book> myQuery = currentSession.createQuery("select b from Book as b join b.author", Book.class);
 
 		List<Book> books = myQuery.getResultList();
 
@@ -59,7 +59,7 @@ public class BookDAOImp implements BookDAO {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 
-		Query theQuery = currentSession.createQuery("delete from Book where bookId=" + bookId);
+		Query<?> theQuery = currentSession.createQuery("delete from Book where bookId=" + bookId);
 
 		theQuery.executeUpdate();
 

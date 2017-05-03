@@ -26,14 +26,11 @@
 
 				<tr>
 					<td>Books Author</td>
-					<td>
-					<form:select name="authors" path="authorId">
-							<c:forEach var="author" items="${authors}">
-								<option value="${author.authorId}">${author.name}</option>
+					<td><form:select name="author" path="author">
+							<c:forEach var="temp_author" items="${authors}">
+								<option value="${temp_author}" ${book.author.name==temp_author.name ? 'selected="selected"' : ''}>${temp_author.name}</option>
 							</c:forEach>
-						</form:select> 
-						
-						</td>
+						</form:select></td>
 				</tr>
 
 				<tr>

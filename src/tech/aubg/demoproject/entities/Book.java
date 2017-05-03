@@ -1,59 +1,59 @@
 package tech.aubg.demoproject.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="book")
-public class Book {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="book_id")
-	int bookId;
-	
-	@Column(name="title")
-	String title;
-	
-	@Column(name="author_id")
-	int authorId;
-	
-	@Column(name="pages")
-	int pages;
-	
-	public Book() {
-		
-	}
+@Table(name = "book")
+public class Book implements Serializable{
 
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6150824772422467970L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "book_id")
+	int bookId;
+
+	@Column(name = "title")
+	String title;
+
+	@Column(name = "pages")
+	int pages;
+
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	Author author;
+
+	public Book() {
+
+	}
 
 	public int getBookId() {
 		return bookId;
 	}
 
+	public Author getAuthor() {
+		return author;
+	}
 
+	public void setAuthor(Author author) {
+		this.author= author;
+	}
 
 	public void setBookId(int bookId) {
 		this.bookId = bookId;
 	}
-
-
-
-	public int getAuthorId() {
-		return authorId;
-	}
-
-
-
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
-	}
-
-
 
 	public String getTitle() {
 		return title;
@@ -63,8 +63,6 @@ public class Book {
 		this.title = title;
 	}
 
-	
-
 	public int getPages() {
 		return pages;
 	}
@@ -73,14 +71,9 @@ public class Book {
 		this.pages = pages;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Book [bookId=" + bookId + ", title=" + title + ", authorId=" + authorId + ", pages=" + pages + "]";
+		return "Book [bookId=" + bookId + ", title=" + title + ", pages=" + pages + "]";
 	}
 
-	
-	
-	
 }

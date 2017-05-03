@@ -1,5 +1,7 @@
 package tech.aubg.demoproject.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "author")
-public class Author {
+public class Author implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2105162968361077714L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

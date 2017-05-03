@@ -12,6 +12,7 @@
 
 <a href="${pageContext.request.contextPath}/books/list"> Books list</a>
 <a href="${pageContext.request.contextPath}/authors/list"> Authors</a>
+<a href="${pageContext.request.contextPath}/houses/list"> Book Printing Houses</a>
 
 </body>
 </html>
