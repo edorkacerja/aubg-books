@@ -13,8 +13,11 @@
 </head>
 <body>
 
+	<jsp:include page="navbar.jsp" flush="true" />
 
-	<input type="button" value="Add book"
+
+
+	<input type="button" class="button" value="Add book"
 		onclick="window.location.href='newBook'; return false;" />
 
 	<table>
@@ -22,16 +25,17 @@
 			<th>Title</th>
 			<th>Author</th>
 			<th>Pages</th>
+			<th>Printing House</th>
 			<th>Update</th>
 		</tr>
-		
+
 		<c:forEach var="temp_book" items="${books_attribute}">
 
 			<!--  just a variable to define the update url and book id -->
 			<c:url var="updateLink" value="/books/updateBook">
 				<c:param name="bookId" value="${temp_book.bookId}" />
 			</c:url>
-			
+
 			<c:url var="deleteLink" value="/books/deleteBook">
 				<c:param name="bookId" value="${temp_book.bookId}" />
 			</c:url>
@@ -40,7 +44,11 @@
 				<td>${ temp_book.title}</td>
 				<td>${ temp_book.author.name}</td>
 				<td>${ temp_book.pages}</td>
-				<td> <a href="${updateLink}"> Edit </a> | <a href="${deleteLink}" onclick="if (!(confirm('Delete book?'))) return false"> Delete </a> </td>
+				<td>${ temp_book.bookPrintingHouse.name }</td>
+				<td><a href="${updateLink}"> Edit </a> | <a
+					href="${deleteLink}"
+					onclick="if (!(confirm('Delete book?'))) return false"> Delete
+				</a></td>
 			</tr>
 		</c:forEach>
 

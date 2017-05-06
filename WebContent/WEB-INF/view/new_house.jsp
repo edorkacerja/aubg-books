@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<jsp:include page="navbar.jsp" flush="true" />
+
 
 	<form:form action="saveHouse" modelAttribute="house" method="POST">
 
@@ -29,7 +31,7 @@
 				</tr>
 
 				<tr>
-					<td><input type="submit" value="Save" /></td>
+					<td><input type="submit" value="Save"  class="button"/></td>
 				</tr>
 			</tbody>
 
@@ -39,10 +41,6 @@
 	</form:form>
 
 
-	<p>
-		<a href="${pageContext.request.contextPath}/houses/list"> Back to
-			Printing Houses List </a>
-	</p>
 
 
 </body>

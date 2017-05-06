@@ -10,6 +10,8 @@
 </head>
 <body>
 
+	<jsp:include page="navbar.jsp" flush="true" />
+
 
 	<form:form action="saveAuthor" modelAttribute="author" method="POST">
 
@@ -34,7 +36,7 @@
 				</tr>
 
 				<tr>
-					<td><input type="submit" value="Save" /></td>
+					<td><input type="submit" value="Save"  class="button"/></td>
 				</tr>
 			</tbody>
 
@@ -44,10 +46,7 @@
 	</form:form>
 
 
-	<p>
-		<a href="${pageContext.request.contextPath}/authors/list"> Back to
-			Authors List </a>
-	</p>
+	
 
 
 </body>

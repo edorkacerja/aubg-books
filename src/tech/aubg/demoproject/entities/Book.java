@@ -34,6 +34,10 @@ public class Book implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	Author author;
+	
+	@ManyToOne
+	@JoinColumn(name = "book_printing_house_id")
+	BookPrintingHouse bookPrintingHouse;
 
 	public Book() {
 
@@ -49,6 +53,15 @@ public class Book implements Serializable{
 
 	public void setAuthor(Author author) {
 		this.author= author;
+	}
+	
+
+	public BookPrintingHouse getBookPrintingHouse() {
+		return bookPrintingHouse;
+	}
+
+	public void setBookPrintingHouse(BookPrintingHouse bookPrintingHouse) {
+		this.bookPrintingHouse = bookPrintingHouse;
 	}
 
 	public void setBookId(int bookId) {

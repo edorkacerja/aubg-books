@@ -10,7 +10,11 @@
 </head>
 <body>
 
-	<input type="button" value="Add Book Printing House"
+	<jsp:include page="navbar.jsp" flush="true" />
+
+
+
+	<input type="button" class="button" value="Add Book Printing House"
 		onclick="window.location.href='newHouse'; return false;" />
 
 	<table>

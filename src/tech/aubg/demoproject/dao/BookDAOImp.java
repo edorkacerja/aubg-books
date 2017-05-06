@@ -23,7 +23,7 @@ public class BookDAOImp implements BookDAO {
 
 		Session currentSession = sessionFactory.getCurrentSession();
 
-		Query<Book> myQuery = currentSession.createQuery("select b from Book as b join b.author", Book.class);
+		Query<Book> myQuery = currentSession.createQuery("select b from Book as b join b.author join b.bookPrintingHouse", Book.class);
 
 		List<Book> books = myQuery.getResultList();
 

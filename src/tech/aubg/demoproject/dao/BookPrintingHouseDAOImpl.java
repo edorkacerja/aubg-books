@@ -45,6 +45,7 @@ public class BookPrintingHouseDAOImpl implements BookPrintingHouseDAO {
 	}
 
 	@Override
+	@Transactional
 	public void saveBookPrintingHouse(BookPrintingHouse bookPrintingHouse) {
 		
 		Session currentSession = sessionFactory.getCurrentSession();

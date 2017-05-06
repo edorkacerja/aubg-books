@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import tech.aubg.demoproject.entities.Author;
 import tech.aubg.demoproject.entities.Book;
+import tech.aubg.demoproject.entities.BookPrintingHouse;
 import tech.aubg.demoproject.services.AuthorService;
+import tech.aubg.demoproject.services.BookPrintingHouseService;
 import tech.aubg.demoproject.services.BookService;
 
 
@@ -24,6 +26,8 @@ public class BooksController {
 	BookService bookService;
 	@Autowired
 	AuthorService authorService;
+	@Autowired
+	BookPrintingHouseService houseService;
 	
 	/**
 	 * @param theModel
@@ -53,6 +57,9 @@ public class BooksController {
 		
 		List<Author> authors = authorService.getAuthors();
 		theModel.addAttribute("authors", authors);
+		
+		List<BookPrintingHouse> houses = houseService.getBookPrintingHouses();
+		theModel.addAttribute("houses", houses);
 		
 		return "new_book";
 	}
@@ -85,8 +92,13 @@ public class BooksController {
 	public String updateBook(@RequestParam("bookId") int bookId, Model theModel){
 		
 		Book myBook = bookService.getBook(bookId);
-		
 		theModel.addAttribute("book", myBook);
+		
+		List<Author> authors = authorService.getAuthors();
+		theModel.addAttribute("authors", authors);
+		
+		List<BookPrintingHouse> houses = houseService.getBookPrintingHouses();
+		theModel.addAttribute("houses", houses);
 		
 		return "new_book";
 	}

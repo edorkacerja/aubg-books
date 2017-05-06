@@ -11,6 +11,8 @@
 </head>
 <body>
 
+	<jsp:include page="navbar.jsp" flush="true" />
+
 
 	<form:form action="saveBook" modelAttribute="book" method="POST">
 
@@ -37,9 +39,18 @@
 					<td>Number of Pages</td>
 					<td><form:input path="pages" /></td>
 				</tr>
+				
+				<tr>
+					<td>Printing House</td>
+					<td><form:select name="bookPrintingHouse" path="bookPrintingHouse">
+							<c:forEach var="temp_house" items="${houses}">
+								<option value="${temp_house}"  ${book.bookPrintingHouse.name==temp_house.name ? 'selected="selected"' : ''}>${temp_house.name}</option>
+							</c:forEach>
+						</form:select></td>
+				</tr>
 
 				<tr>
-					<td><input type="submit" value="Save" /></td>
+					<td><input type="submit" value="Save"  class="button"/></td>
 				</tr>
 			</tbody>
 
@@ -49,10 +60,6 @@
 	</form:form>
 
 
-	<p>
-		<a href="${pageContext.request.contextPath}/books/list"> Back to
-			Books List </a>
-	</p>
 
 
 
